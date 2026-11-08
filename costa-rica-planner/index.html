@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pura Vida Planner</title>
+  <meta name="description" content="Interactive Costa Rica trip planner for 2 college travelers, May 7–20, 2027.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="lib/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-top">
+      <div>
+        <h1>🌺 Pura Vida Planner</h1>
+        <p class="subtitle" id="subtitle">Costa Rica · May 7 – 20, 2027</p>
+      </div>
+      <div class="hero-actions no-print">
+        <div class="currency" role="group" aria-label="Currency">
+          <button id="curUSD" class="pill active">US$</button>
+          <button id="curCRC" class="pill">₡ CRC</button>
+        </div>
+        <label class="rate">₡ per $1
+          <input id="fxRate" type="number" min="1" step="1">
+        </label>
+        <button id="printBtn" class="pill print">🖨️ Print / PDF</button>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat countdown"><span class="stat-label">⏳ Countdown to takeoff</span><span class="stat-value" id="countdown">—</span></div>
+      <div class="stat"><span class="stat-label">💰 Trip total (2 people)</span><span class="stat-value" id="totalAll">—</span></div>
+      <div class="stat"><span class="stat-label">🧍 Per person</span><span class="stat-value" id="totalPP">—</span></div>
+      <div class="stat budget-stat" id="budgetStat"><span class="stat-label" id="budgetLabel">🎯 vs. budget</span><span class="stat-value" id="budgetDiff">—</span>
+        <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+      </div>
+    </div>
+    <p class="fx-note" id="fxNote"></p>
+  </header>
+
+  <nav class="tabs no-print" id="tabs">
+    <button data-tab="plan" class="active">📊 Budget</button>
+    <button data-tab="itinerary">🗓️ Itinerary</button>
+    <button data-tab="map">🗺️ Route</button>
+    <button data-tab="expenses">🧾 Expenses</button>
+    <button data-tab="moped">🛵 Moped</button>
+    <button data-tab="save">💡 Save money</button>
+    <button data-tab="lists">✅ Checklists</button>
+    <button data-tab="sources">🔗 Sources</button>
+  </nav>
+
+  <main>
+    <!-- BUDGET / CHARTS -->
+    <section class="tab-panel active" id="tab-plan">
+      <h2 class="print-title">📊 Budget</h2>
+      <div class="card controls">
+        <h3>🎛️ Tweak the plan</h3>
+        <div class="control-grid">
+          <label class="ctl">Total budget (US$, for 2)
+            <input id="budgetInput" type="number" min="0" step="50">
+          </label>
+          <div class="ctl">Travel style
+            <div class="tier-toggle" id="tierToggle"></div>
+            <small id="tierDesc"></small>
+          </div>
+          <label class="ctl">🍺 Beers per person per day: <b id="beersVal"></b>
+            <input id="beersSlider" type="range" min="0" max="8" step="1">
+          </label>
+          <label class="ctl">🛵 Moped days: <b id="mopedVal"></b>
+            <input id="mopedSlider" type="range" min="0" max="5" step="1">
+          </label>
+          <label class="ctl">🎟️ Paid activities: <b id="actVal"></b>
+            <input id="actSlider" type="range" min="0" max="13" step="1">
+          </label>
+          <label class="ctl">✈️ Flight routing
+            <select id="flightSelect"></select>
+          </label>
+        </div>
+        <button id="resetBtn" class="pill ghost no-print">↺ Reset to defaults</button>
+      </div>
+
+      <div class="grid-2">
+        <div class="card"><h3>🍩 Where the money goes</h3><div class="chart-box"><canvas id="donutChart"></canvas></div></div>
+        <div class="card"><h3>📋 Category totals</h3><div id="catTable"></div></div>
+      </div>
+      <div class="card"><h3>📅 Cost per day (stacked)</h3><div class="chart-box tall"><canvas id="dailyChart"></canvas></div></div>
+      <div class="grid-2">
+        <div class="card"><h3>📈 Running total vs. budget cap</h3><div class="chart-box"><canvas id="cumChart"></canvas></div></div>
+        <div class="card"><h3>📍 Cost per region</h3><div class="chart-box"><canvas id="regionChart"></canvas></div><small>Excludes flights. Each region's total covers its nights, food, activities and the travel leg into it.</small></div>
+      </div>
+      <div class="card"><h3>🤑 Splurge vs. 🪙 save</h3>
+        <p class="muted">The <b>save</b> bar is what each category costs on the cheapest settings (Budget tier, no beer, no moped, the 4 cheapest must-do parks). The <b>splurge</b> bar is the extra your current choices add on top.</p>
+        <div class="chart-box"><canvas id="splurgeChart"></canvas></div>
+      </div>
+      <div class="card"><h3>🔎 Cost drivers</h3><ol id="drivers" class="drivers"></ol></div>
+    </section>
+
+    <!-- ITINERARY -->
+    <section class="tab-panel" id="tab-itinerary">
+      <h2 class="print-title">🗓️ Itinerary</h2>
+      <div class="card why"><h3>🧭 Why this route?</h3><p id="routeWhy"></p></div>
+      <div id="dayCards" class="day-cards"></div>
+    </section>
+
+    <!-- MAP -->
+    <section class="tab-panel" id="tab-map">
+      <h2 class="print-title">🗺️ Route</h2>
+      <div class="card"><div id="map"></div><div id="mapFallback" hidden></div></div>
+      <div class="card"><h3>🚌 Travel legs</h3><div id="legTable"></div></div>
+      <div class="card"><h3>✈️ Flight options compared</h3><div id="flightTable"></div></div>
+    </section>
+
+    <!-- EXPENSES -->
+    <section class="tab-panel" id="tab-expenses">
+      <h2 class="print-title">🧾 Expenses</h2>
+      <div class="card">
+        <h3>🧾 Shared expense log</h3>
+        <p class="muted">Log what you actually spend. It's saved in this browser. Amounts are in US$.</p>
+        <div class="names no-print">
+          <label>Traveler 1 <input id="nameA" type="text"></label>
+          <label>Traveler 2 <input id="nameB" type="text"></label>
+        </div>
+        <div class="table-wrap">
+          <table class="exp-table">
+            <thead><tr><th>Item</th><th>Category</th><th>Amount $</th><th>Paid by</th><th>Split 50/50?</th><th class="no-print"></th></tr></thead>
+            <tbody id="expBody"></tbody>
+          </table>
+        </div>
+        <div class="exp-actions no-print">
+          <button id="addExp" class="pill">➕ Add expense</button>
+          <button id="seedExp" class="pill ghost">📥 Load planned big-ticket items</button>
+          <button id="clearExp" class="pill ghost danger">🗑️ Clear all</button>
+        </div>
+      </div>
+      <div class="card settle"><h3>🤝 Split calculator</h3><div id="settle"></div></div>
+    </section>
+
+    <!-- MOPED -->
+    <section class="tab-panel" id="tab-moped">
+      <h2 class="print-title">🛵 Moped</h2>
+      <div class="card safety" id="safetyNote"></div>
+      <div class="grid-2">
+        <div class="card"><h3>💵 What it costs</h3><ul id="mopedCosts" class="clean"></ul></div>
+        <div class="card"><h3>📜 Rules & license</h3><ul id="mopedRules" class="clean"></ul></div>
+      </div>
+      <div class="grid-2">
+        <div class="card good"><h3>👍 Good idea</h3><ul id="mopedGood" class="clean"></ul></div>
+        <div class="card bad"><h3>🚐 Take a shuttle instead</h3><ul id="mopedBad" class="clean"></ul></div>
+      </div>
+    </section>
+
+    <!-- SAVE -->
+    <section class="tab-panel" id="tab-save">
+      <h2 class="print-title">💡 Save money</h2>
+      <div id="hacks" class="hack-grid"></div>
+      <div class="card"><h3>🍺 Drinks</h3><div id="alcoholInfo"></div></div>
+      <div class="card"><h3>🛒 Food price reference</h3><div id="foodRef"></div></div>
+      <div class="card"><h3>🆓 Free fun on this route</h3><ul id="freeList" class="clean chips"></ul></div>
+    </section>
+
+    <!-- CHECKLISTS -->
+    <section class="tab-panel" id="tab-lists">
+      <h2 class="print-title">✅ Checklists</h2>
+      <div class="grid-2">
+        <div class="card"><h3>📋 Pre-trip <span class="progress" id="preProg"></span></h3><ul id="preList" class="checklist"></ul></div>
+        <div class="card"><h3>🎒 Packing <span class="progress" id="packProg"></span></h3><ul id="packList" class="checklist"></ul></div>
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="tab-panel" id="tab-sources">
+      <h2 class="print-title">🔗 Sources</h2>
+      <div class="card">
+        <h3>🔗 Where every number comes from</h3>
+        <p class="muted" id="srcIntro"></p>
+        <div id="priceSources"></div>
+      </div>
+      <div class="card"><h3>📚 All sources</h3><ol id="srcList" class="src-list"></ol></div>
+    </section>
+  </main>
+
+  <footer class="foot">Made for two broke-but-adventurous students · Prices researched <span id="researched"></span> · Edit <code>data.json</code> to update</footer>
+
+  <div id="loadError" class="load-error" hidden>
+    <div class="card">
+      <h3>🙈 Couldn't load data.json</h3>
+      <p>Browsers block <code>fetch()</code> on pages opened straight from disk (<code>file://</code>). Two fixes:</p>
+      <ol>
+        <li>Run <code>python3 -m http.server 8000</code> in this folder, then open <code>http://localhost:8000</code>, <b>or</b></li>
+        <li>Pick the <code>data.json</code> file here: <input type="file" id="dataFile" accept=".json,application/json"></li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="lib/chart.umd.min.js"></script>
+  <script src="lib/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

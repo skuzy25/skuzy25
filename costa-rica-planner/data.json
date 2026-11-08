@@ -1,0 +1,369 @@
+{
+  "meta": {
+    "title": "Pura Vida Planner",
+    "subtitle": "Costa Rica · May 7 – 20, 2027 · 2 college travelers",
+    "departDate": "2027-05-07T06:00:00",
+    "returnDate": "2027-05-20",
+    "travelers": 2,
+    "travelerNames": ["Traveler A", "Traveler B"],
+    "defaultBudget": 5000,
+    "defaultTier": "mid",
+    "researchedOn": "2026-11-08",
+    "exchangeRate": {
+      "usdToCrc": 455,
+      "asOf": "mid-2026",
+      "label": "₡455 per US$1. This is a hardcoded estimate: the dollar closed at ₡453.94 in May 2026 (Tico Times), and ValutaFX showed about ₡453 in July 2026. Edit it in the header or in data.json.",
+      "src": ["fx-ticotimes", "fx-valuta"]
+    }
+  },
+
+  "tiers": {
+    "budget": { "label": "Budget", "emoji": "🎒", "lodgingKey": "dorm", "desc": "Dorm beds, casados and supermarket meals, public buses where they exist." },
+    "mid":    { "label": "Mid",    "emoji": "🌴", "lodgingKey": "private", "desc": "A private room for 2 in hostels, a mix of sodas and cooking, shuttles on the long legs." },
+    "comfy":  { "label": "Comfy",  "emoji": "🛎️", "lodgingKey": "hotel", "desc": "Budget hotels, cabinas or Airbnbs, eating out most meals, shuttles everywhere." }
+  },
+
+  "regions": [
+    {
+      "id": "alajuela", "name": "Alajuela (near SJO airport)", "short": "Alajuela", "emoji": "✈️", "color": "#7c4dff",
+      "lat": 10.0163, "lng": -84.2116,
+      "lodging": {
+        "dorm":    { "perNight": 30, "note": "2 dorm beds at about $15 each. Guide range for San José is $15–22 per bed.", "src": ["drinktea-backpack"], "estimate": false },
+        "private": { "perNight": 45, "note": "Private hostel room for 2. Hostelz puts the national average for private rooms at about $58, and near-airport hostels sit below that.", "src": ["hostelz-budget"], "estimate": true },
+        "hotel":   { "perNight": 70, "note": "Budget hotel or Airbnb near the airport.", "src": ["hostelz-budget"], "estimate": true }
+      }
+    },
+    {
+      "id": "fortuna", "name": "La Fortuna / Arenal", "short": "La Fortuna", "emoji": "🌋", "color": "#e65100",
+      "lat": 10.4719, "lng": -84.6427,
+      "lodging": {
+        "dorm":    { "perNight": 36, "note": "2 dorm beds at about $18 each. Guide range: $15–25 per bed.", "src": ["drinktea-backpack"], "estimate": false },
+        "private": { "perNight": 40, "note": "Private room for 2. A 2026 budget guide gives $25–40.", "src": ["fortuna-budget"], "estimate": false },
+        "hotel":   { "perNight": 75, "note": "Cabina or budget hotel with a pool.", "src": ["hostelz-budget"], "estimate": true }
+      }
+    },
+    {
+      "id": "monteverde", "name": "Monteverde / Santa Elena", "short": "Monteverde", "emoji": "☁️", "color": "#2e7d32",
+      "lat": 10.3126, "lng": -84.8253,
+      "lodging": {
+        "dorm":    { "perNight": 32, "note": "2 dorm beds at about $16 each. I found no Monteverde-specific figure, so this uses the national dorm average.", "src": ["hostelz-budget", "bootsnall-col"], "estimate": true },
+        "private": { "perNight": 45, "note": "Private hostel room for 2.", "src": ["hostelz-budget"], "estimate": true },
+        "hotel":   { "perNight": 75, "note": "Budget lodge or Airbnb.", "src": ["hostelz-budget"], "estimate": true }
+      }
+    },
+    {
+      "id": "manuel", "name": "Manuel Antonio / Quepos", "short": "Manuel Antonio", "emoji": "🐒", "color": "#0277bd",
+      "lat": 9.4319, "lng": -84.1617,
+      "lodging": {
+        "dorm":    { "perNight": 28, "note": "2 dorm beds at about $14 each. Quepos listings run $11–13.69 per bed.", "src": ["hostelz-quepos"], "estimate": false },
+        "private": { "perNight": 44, "note": "Private room for 2. Listings show $35–43.77, and Booking.com starts at $36–50.", "src": ["hostelz-quepos", "booking-ma"], "estimate": false },
+        "hotel":   { "perNight": 85, "note": "Selina Manuel Antonio private room: about $85.17.", "src": ["hostelz-quepos"], "estimate": false }
+      }
+    },
+    {
+      "id": "uvita", "name": "Uvita / Dominical", "short": "Uvita", "emoji": "🐋", "color": "#00897b",
+      "lat": 9.1586, "lng": -83.7418,
+      "lodging": {
+        "dorm":    { "perNight": 40, "note": "2 dorm beds at about $20 each. Hostelz average for Uvita: $20.", "src": ["hostelz-uvita"], "estimate": false },
+        "private": { "perNight": 45, "note": "Private room for 2.", "src": ["hostelz-uvita"], "estimate": true },
+        "hotel":   { "perNight": 75, "note": "Cabina or Airbnb near the beach.", "src": ["hostelz-uvita"], "estimate": true }
+      }
+    }
+  ],
+
+  "routeWhy": "This route runs as a one-way loop: north to the volcano, west over Lake Arenal to the cloud forest, down to the Pacific, south along the coast, then a straight run back to San José. Nothing is backtracked. It puts the misty highlands early, when you have the most energy for hikes, and saves beach and moped days for the end. The Costanera coast road between Quepos and Uvita is the easiest stretch of the trip for a scooter. Every leg is 4–5 hours or less, and the La Fortuna → Monteverde leg crosses the lake by boat, which turns a travel day into a sightseeing day. Flying in and out of SJO (not LIR) keeps the first and last nights 10 minutes from the airport.",
+
+  "stops": [
+    { "n": 1, "region": "alajuela", "days": "Day 1", "nights": 1 },
+    { "n": 2, "region": "fortuna",  "days": "Days 2–5", "nights": 3 },
+    { "n": 3, "region": "monteverde", "days": "Days 5–7", "nights": 2 },
+    { "n": 4, "region": "manuel",   "days": "Days 7–10", "nights": 3 },
+    { "n": 5, "region": "uvita",    "days": "Days 10–13", "nights": 3 },
+    { "n": 6, "region": "alajuela", "days": "Days 13–14", "nights": 1 }
+  ],
+
+  "flights": {
+    "chosen": "syr",
+    "options": [
+      { "id": "syr", "route": "SYR → SJO (Syracuse)", "pp": 380, "low": 320, "high": 537, "note": "One or two stops (usually via CLT or MIA on American). Recent cheapest round trip is about $320, and the typical range is $354–537. $380 is a padded planning number because May 2027 fares are not on sale yet. It is also the closest airport to Utica (about 1 hour).", "src": ["kayak-syr", "travelocity-syr"], "estimate": true, "recommended": true },
+      { "id": "jfk", "route": "JFK → SJO (New York)", "pp": 290, "low": 200, "high": 424, "note": "Cheapest fare: $199–290, including JetBlue nonstop from about $282. You then have to get from Utica to JFK and back: roughly 4–5 hours each way by bus or train, an estimated $60–100 round trip per person, and possibly a hotel night. Total is about $350–390 per person, so it barely beats SYR.", "src": ["kayak-jfk", "skyscanner-jfk"], "estimate": true, "extraPp": 80 },
+      { "id": "alb", "route": "ALB → LIR (Albany → Liberia)", "pp": 386, "low": 351, "high": 745, "note": "Round trip from $351–386, and no nonstop. LIR is in Guanacaste, about 3+ hours from La Fortuna, so this route works better for a north-Pacific beach plan than for this one.", "src": ["kayak-alb", "orbitz-alb"], "estimate": true }
+    ],
+    "transfers": [
+      { "name": "SJO → Alajuela hostel (Uber or orange taxi), Day 1", "perCar": 12, "src": ["drinktea-uber", "aifly-sjo"], "estimate": true, "note": "Uber to downtown San José runs $10–18 and Alajuela town is closer. Orange airport taxis are metered on ARESEP rates." },
+      { "name": "Alajuela → SJO departures, Day 14", "perCar": 10, "src": ["drinktea-uber"], "estimate": true, "note": "Uber can drop off at departures without trouble." }
+    ]
+  },
+
+  "legs": [
+    { "id": "L1", "day": 2, "from": "alajuela", "to": "fortuna", "drive": "≈3 h drive · 4–4.5 h bus",
+      "modes": {
+        "bus":     { "pp": 7.7, "label": "Public bus (Autotransportes San José–San Carlos)", "note": "About ₡3,000–3,500. Fares went up in May 2026 because of fuel prices, so this uses the top of the range.", "src": ["crxyz-bus", "tico-fares"], "estimate": false },
+        "shuttle": { "pp": 55, "label": "Interbus / Gray Line shared shuttle", "note": "SJO area → La Fortuna is about $55 per person through resellers.", "src": ["interbus-itin", "drinktea-shuttle"], "estimate": false }
+      },
+      "tierMode": { "budget": "bus", "mid": "shuttle", "comfy": "shuttle" } },
+    { "id": "L2", "day": 5, "from": "fortuna", "to": "monteverde", "drive": "≈3 h (jeep–boat–jeep across Lake Arenal)",
+      "modes": {
+        "bus":     { "pp": 30, "label": "Jeep–Boat–Jeep (shared)", "note": "$25–35 per person, plus 13% tax with some operators. The public bus (changing at Tilarán) takes 7+ hours, so it is not worth it.", "src": ["jbj-casabatsu", "jbj-elbosque"], "estimate": false },
+        "shuttle": { "pp": 30, "label": "Jeep–Boat–Jeep (shared)", "note": "Same service. It is the best option at every tier.", "src": ["jbj-casabatsu"], "estimate": false }
+      },
+      "tierMode": { "budget": "bus", "mid": "shuttle", "comfy": "shuttle" } },
+    { "id": "L3", "day": 7, "from": "monteverde", "to": "manuel", "drive": "≈4.5 h shuttle",
+      "modes": {
+        "bus":     { "pp": 12, "label": "Public buses via Puntarenas (2–3 changes)", "note": "ESTIMATE, not verified: I found no current fare. It takes 6–7 hours.", "src": [], "estimate": true },
+        "shuttle": { "pp": 57, "label": "Interbus shared shuttle", "note": "Interbus lists Manuel Antonio ↔ Monteverde from $57.", "src": ["interbus-ma-mv"], "estimate": false }
+      },
+      "tierMode": { "budget": "shuttle", "mid": "shuttle", "comfy": "shuttle" } },
+    { "id": "L4", "day": 10, "from": "manuel", "to": "uvita", "drive": "≈1 h 15 min (Costanera Sur)",
+      "modes": {
+        "bus":     { "pp": 4.5, "label": "Public bus Quepos → Uvita", "note": "ESTIMATE, not verified: about ₡2,000. I found no published fare.", "src": [], "estimate": true },
+        "shuttle": { "pp": 45, "label": "Shared shuttle", "note": "ESTIMATE, not verified. Ask your hostel.", "src": [], "estimate": true }
+      },
+      "tierMode": { "budget": "bus", "mid": "bus", "comfy": "shuttle" } },
+    { "id": "L5", "day": 13, "from": "uvita", "to": "alajuela", "drive": "≈3.5 h drive · 4.5–6 h bus",
+      "modes": {
+        "bus":     { "pp": 19.5, "label": "Tracopa bus to San José + Uber to Alajuela", "note": "Tracopa is $10–15 (₡6,000–7,500), plus an Uber from the Tracopa terminal to Alajuela (estimated $15 per car).", "src": ["cr-divers-uvita"], "estimate": false },
+        "shuttle": { "pp": 60, "label": "Shared shuttle to SJO area", "note": "ESTIMATE, not verified. A private shuttle costs $250–400 per vehicle.", "src": ["cr-divers-uvita"], "estimate": true }
+      },
+      "tierMode": { "budget": "bus", "mid": "bus", "comfy": "shuttle" } }
+  ],
+
+  "localTransport": { "perDayFor2": 8, "estimate": true, "note": "In-town Ubers and taxis plus the odd local bus (₡540-type fares). Estimate only.", "src": ["drinktea-uber"] },
+
+  "food": {
+    "perPersonDay": { "budget": 22, "mid": 32, "comfy": 45 },
+    "estimate": true,
+    "basis": "Built from: a casado at a soda ($5–9, sometimes up to $11), breakfast from the supermarket (Palí or Maxi Palí are cheapest, Auto Mercado is the priciest), street food or a second soda meal, plus coffee. Budget = cook breakfast and some dinners. Mid = soda lunch and dinner. Comfy = mostly restaurants.",
+    "src": ["bootsnall-col", "crie-food", "drinktea-grocery", "tico-automercado"],
+    "nicerDinner": { "pp": 25, "estimate": true, "note": "Nicer sit-down dinner with a view, per person. Bills already include 13% IVA and a 10% service charge, so check before adding a tip." },
+    "reference": [
+      { "item": "Casado at a soda", "price": "$5–9 (up to $11)", "src": ["bootsnall-col", "crie-food"] },
+      { "item": "Imperial at the supermarket", "price": "≈₡960 (≈$1.75–2)", "src": ["crie-beer"] },
+      { "item": "Imperial/Pilsen 6-pack (supermarket)", "price": "≈₡4,000–5,200 ($7.45–10)", "src": ["crie-beer", "crvibes-alcohol"] },
+      { "item": "Cacique guaro, 1 L", "price": "₡3,500–5,000 ($7–10)", "src": ["crvibes-alcohol"] },
+      { "item": "Cheapest supermarket chains", "price": "Palí / Maxi Palí < Mas x Menos < Auto Mercado", "src": ["drinktea-grocery", "tico-automercado"] }
+    ]
+  },
+
+  "alcohol": {
+    "beersPerDayDefault": 2,
+    "barShare": 0.5,
+    "barBeer": { "price": 3.25, "label": "Imperial / Pilsen / Bavaria at a bar or soda", "range": "$2.50–4.00", "src": ["bootsnall-col", "crie-beer"] },
+    "marketBeer": { "price": 1.8, "label": "Same beer from Palí or a mini-super", "range": "₡960 a bottle; ₡4,000–5,200 a six", "src": ["crie-beer", "crvibes-alcohol"] },
+    "guaro": { "price": 8.5, "bottles": 2, "label": "Cacique guaro 1 L (for the group)", "range": "$7–10", "src": ["crvibes-alcohol"] },
+    "cocktail": { "price": 8, "perPersonTrip": 4, "label": "Cocktails (guaro sour, mojito) at beach bars", "estimate": true, "src": [] },
+    "happyHour": "Beach towns (Quepos, Manuel Antonio, Dominical) commonly run 2-for-1 or discounted happy hours, often around sunset. Ask at your hostel. Many hostels also sell cold Imperials at near-supermarket prices. (General tip, not tied to a specific source.)",
+    "ageNote": "The legal drinking age in Costa Rica is 18. Carry a passport photo or copy, since bars may ask for ID."
+  },
+
+  "moped": {
+    "dailyRate": 51,
+    "dailyRateNote": "150cc street scooter in Manuel Antonio: $51/day (Dec–May), $57/day (Jun–Nov). It fits a maximum of 2 people.",
+    "insurancePerDay": 10,
+    "insuranceNote": "Basic third-party insurance is usually included. Optional collision cover (CDW) is about $10/day (ESTIMATE). It caps what you can lose at the deposit.",
+    "gasPerDay": 5,
+    "gasNote": "A 125–150cc scooter needs about 2–4 L for a day of beach-hopping (ESTIMATE).",
+    "deposit": "$100–450, refundable, usually held on a credit card in the rider's name. It is not counted in the total.",
+    "weekly": "Multi-day packages exist (e.g. MangoScoot from $137 per group for multi-day 150cc off-road scooters). Ask for a 3-day rate.",
+    "atv": "Self-drive ATV rental is rare. Guided ATV tours run $85–158 per person (FourTrax from $110 single or $140 for 2 sharing, plus 13% tax; MidWorld about $95). ATV is listed under Activities.",
+    "defaultDays": 3,
+    "dayPriority": [11, 12, 9, 8, 10],
+    "src": ["localbird-scooter", "riderly-quepos", "tripadvisor-mango", "bikesbooking-sj", "fourtrax", "midworld-atv"],
+    "rules": [
+      "Bring your US driver's license and passport. Tourists can drive on a valid foreign license during their tourist stay. Rental requirements vary: some want a car license (category B) plus age 21–25, while others want a motorcycle (A or A1) endorsement. Ask your shop in writing.",
+      "If you have no motorcycle endorsement, your travel insurance may refuse to pay for a scooter crash. Read the policy's motorcycle clause before you ride.",
+      "Helmets are mandatory for rider and passenger. Make sure the shop gives you two that actually fit.",
+      "Ride in daylight only. May afternoons bring downpours, potholes and unlit roads.",
+      "Two people maximum on one scooter. Keep your pace slow on gravel."
+    ],
+    "goodIdea": ["Quepos ↔ Manuel Antonio ↔ Playa Biesanz (short, paved, slow traffic)", "Uvita ↔ Dominical ↔ Nauyaca trailhead along the Costanera (wide, scenic)", "Uvita ↔ Ojochal and Playa Ventanas"],
+    "shuttleBetter": ["San José metro traffic", "La Fortuna ↔ Monteverde (rough mountain road; take the jeep–boat–jeep)", "Any long inter-region leg with luggage", "Anything after dark or in heavy rain"],
+    "safetyNote": "⚠️ Safety first: road crashes are among the most common ways tourists get hurt in Costa Rica. Only rent if one of you is a confident two-wheel rider. Wear helmets and closed shoes, never ride after drinking (the guaro waits until you park), avoid night riding, and photograph the scooter before you take it. If you're unsure, a $5 local bus or a taxi is cheaper than a hospital."
+  },
+
+  "activities": [
+    { "id": "fortuna-falls", "name": "La Fortuna Waterfall (500 steps + swim)", "emoji": "💦", "region": "fortuna", "day": 3, "pp": 20, "priority": 1, "src": ["nomadic-fortuna-falls"], "estimate": false, "note": "$20 foreigners in 2026. Open 7am–5pm daily." },
+    { "id": "arenal-np", "name": "Arenal Volcano National Park hike", "emoji": "🌋", "region": "fortuna", "day": 3, "pp": 17, "priority": 2, "src": ["arenal-fee"], "estimate": false, "note": "$15 + 13% tax. Open 8am–4pm. Card only, per some sources." },
+    { "id": "ma-np", "name": "Manuel Antonio National Park", "emoji": "🦥", "region": "manuel", "day": 8, "pp": 18, "priority": 3, "src": ["ma-fee", "ma-faq"], "estimate": false, "note": "$16 + tax. Buy online on SINAC in advance; there are no gate sales. Closed Tuesdays." },
+    { "id": "mv-reserve", "name": "Monteverde Cloud Forest Reserve", "emoji": "🌿", "region": "monteverde", "day": 6, "pp": 26, "priority": 4, "src": ["mv-guide", "mv-timed"], "estimate": false, "note": "$25–26 adults, $12–13 students (bring a student ID!). Timed online entry since 2026." },
+    { "id": "rafting", "name": "Balsa River rafting (Class II–III)", "emoji": "🚣", "region": "fortuna", "day": 4, "pp": 70, "priority": 5, "src": ["rafting-fortunawelcome", "rafting-2wks"], "estimate": false, "note": "From $70 with taxes included (FortunaWelcome). Rain makes the rapids better!" },
+    { "id": "zipline", "name": "Monteverde Extremo zipline", "emoji": "🪂", "region": "monteverde", "day": 6, "pp": 72, "priority": 6, "src": ["extremo-expedia"], "estimate": false, "note": "About $72 for 3 hours (Expedia listing). Superman cable included; bungee and Tarzan swing cost extra." },
+    { "id": "nauyaca", "name": "Nauyaca Waterfalls (hike in)", "emoji": "🏞️", "region": "uvita", "day": 11, "pp": 10, "priority": 7, "src": ["nauyaca-ticotravel", "nauyaca-saltinourhair"], "estimate": false, "note": "$10 hike-in entrance (Don Lulo). The newer Nature Park entrance or a 4×4 ride costs $27–32." },
+    { "id": "surf", "name": "Surf lesson (2 h, board included)", "emoji": "🏄", "region": "manuel", "day": 9, "pp": 66, "priority": 8, "src": ["surf-expedia", "surf-cradventure"], "estimate": false, "note": "$66–79 per person. Morning slot for glassier waves." },
+    { "id": "hotsprings", "name": "Hot springs evening (Baldi day pass)", "emoji": "♨️", "region": "fortuna", "day": 4, "pp": 40, "priority": 9, "src": ["openshores-fortuna"], "estimate": true, "note": "Baldi day visitor pass: $35–60. Cheaper springs exist; check prices locally." },
+    { "id": "canyoning", "name": "Pure Trek canyoning (waterfall rappel)", "emoji": "🧗", "region": "fortuna", "day": 4, "pp": 116, "priority": 10, "src": ["puretrek-rates"], "estimate": false, "note": "$103 rack rate + 13% tax (2026 rate sheet)." },
+    { "id": "ballena", "name": "Marino Ballena NP (Whale's Tail at low tide)", "emoji": "🐋", "region": "uvita", "day": 12, "pp": 7, "priority": 11, "src": ["ballena-atickettotakeoff", "ballena-crvibes"], "estimate": false, "note": "$6 + tax. Check the tide table." },
+    { "id": "catamaran", "name": "Catamaran + snorkel tour", "emoji": "⛵", "region": "manuel", "day": 9, "pp": 90, "priority": 12, "src": ["catamaran-ocean-king"], "estimate": false, "note": "Ocean King catamaran from $90, with snacks and snorkel gear." },
+    { "id": "atv", "name": "Guided ATV jungle tour", "emoji": "🏍️", "region": "manuel", "day": 8, "pp": 95, "priority": 13, "src": ["midworld-atv", "fourtrax"], "estimate": false, "note": "MidWorld about $95 (lunch + transport). FourTrax $110 single or $140 for 2 sharing, + tax." }
+  ],
+  "defaultPaidActivities": 9,
+
+  "freeActivities": [
+    { "name": "El Salto swimming hole & rope swing (La Fortuna town)", "emoji": "🌊", "region": "fortuna" },
+    { "name": "Playa Espadilla public beach (outside the park)", "emoji": "🏖️", "region": "manuel" },
+    { "name": "Sunset at Playa Dominical", "emoji": "🌅", "region": "uvita" },
+    { "name": "Santa Elena town walk + free lookout points", "emoji": "🥾", "region": "monteverde" },
+    { "name": "Playa Biesanz snorkel cove (bring your own mask)", "emoji": "🤿", "region": "manuel" },
+    { "name": "Mercado Central de Alajuela wander", "emoji": "🧺", "region": "alajuela" }
+  ],
+
+  "extras": [
+    { "id": "insurance", "name": "Travel insurance (SafetyWing, 4-week block, ages 10–39)", "emoji": "🛡️", "amount": 56.28, "per": "person", "day": 1, "src": ["swiftest-ins", "squaremouth"], "estimate": false, "note": "Billed in 4-week blocks. A comprehensive plan averages about $230 for 12 days (Squaremouth)." },
+    { "id": "esim", "name": "eSIM data (Airalo / kölbi Global eSIM)", "emoji": "📶", "amount": 15, "per": "person", "day": 1, "src": ["tico-kolbi-airalo", "esims-io"], "estimate": true, "note": "About $1.01/GB on Airalo. A local SIM is about $5 plus top-ups and needs your passport." },
+    { "id": "sunbug", "name": "Reef-safe sunscreen + DEET bug spray", "emoji": "🧴", "amount": 35, "per": "group", "day": 1, "src": ["drinktea-grocery"], "estimate": true, "note": "Imported goods carry heavy taxes in Costa Rica, so buy at home." },
+    { "id": "souvenirs", "name": "Souvenirs (coffee, Salsa Lizano, a hammock…)", "emoji": "🎁", "amount": 40, "per": "person", "day": 13, "src": [], "estimate": true, "note": "Pure estimate. Adjust it to taste." },
+    { "id": "atm", "name": "ATM fees (3 withdrawals)", "emoji": "🏧", "amount": 24, "per": "group", "day": 2, "src": ["atmfeesaver"], "estimate": true, "note": "BAC charges $7.80 per foreign-card withdrawal. Banco Nacional and BCR were reported as free (2024 forum). Your home bank may add its own fee." },
+    { "id": "tips", "name": "Tips for guides & drivers", "emoji": "🙏", "amount": 40, "per": "group", "day": 12, "src": [], "estimate": true, "note": "Restaurant bills already include a 10% service charge. Budget about $5 per person for great guides." },
+    { "id": "departuretax", "name": "Departure tax ($29 pp, usually inside your airfare)", "emoji": "🛫", "amount": 0, "per": "person", "day": 14, "src": ["crguide-deptax", "entercr-deptax"], "estimate": false, "note": "Set to $0 because US carriers include it. If your ticket doesn't, change this to 29." }
+  ],
+  "bufferPct": 10,
+
+  "days": [
+    { "day": 1, "date": "2027-05-07", "region": "alajuela", "sleep": "Hostel near Alajuela center (10 min from SJO)",
+      "morning": "✈️ Fly SYR → SJO (1–2 stops)", "afternoon": "Land, get colones from a Banco Nacional/BCR ATM, Uber to the hostel", "evening": "First casado at a local soda + a cold Imperial",
+      "food": "Airport snacks; soda dinner", "transport": "Flight + Uber/taxi from SJO", "activities": [], "nicerDinner": false,
+      "rain": { "note": "Afternoon storms are typical at the start of the green season, and you'll mostly be in the air anyway.", "backup": "Mercado Central de Alajuela (covered) + a coffee tasting" } },
+    { "day": 2, "date": "2027-05-08", "region": "fortuna", "sleep": "La Fortuna hostel (pool + volcano view)",
+      "morning": "🚌 Travel to La Fortuna (≈3–4.5 h)", "afternoon": "Check in, walk town, El Salto swimming hole (free)", "evening": "Happy hour + soda dinner",
+      "food": "Supermarket breakfast; soda lunch on arrival", "transport": "Leg 1: bus or shuttle", "leg": "L1", "activities": [], "nicerDinner": false,
+      "rain": { "note": "Rain usually arrives after 1–2 pm in May.", "backup": "Chocolate or coffee farm tour (extra cost) or hostel hammock time" } },
+    { "day": 3, "date": "2027-05-09", "region": "fortuna", "sleep": "La Fortuna hostel",
+      "morning": "💦 La Fortuna Waterfall at opening (7 am)", "afternoon": "🌋 Arenal Volcano NP lava-field trails (go by 1 pm)", "evening": "Cook at the hostel, beers on the porch",
+      "food": "Groceries from Palí; soda lunch", "transport": "Local taxi to the trailheads", "activities": ["fortuna-falls", "arenal-np"], "nicerDinner": false,
+      "rain": { "note": "Volcano views cloud over by midday, so do the hikes early.", "backup": "Swap the afternoon for hot springs. The hot pools are even better in the rain." } },
+    { "day": 4, "date": "2027-05-10", "region": "fortuna", "sleep": "La Fortuna hostel",
+      "morning": "🚣 Balsa River rafting (or 🧗 canyoning)", "afternoon": "Lunch, nap, laundry", "evening": "♨️ Hot springs night + nicer dinner",
+      "food": "Lunch included with most rafting tours; nicer dinner", "transport": "Tour pickup", "activities": ["rafting", "canyoning", "hotsprings"], "nicerDinner": true,
+      "rain": { "note": "Rafting runs in rain, and higher water means more fun.", "backup": "If it's a total washout, move the hot springs to the afternoon" } },
+    { "day": 5, "date": "2027-05-11", "region": "monteverde", "sleep": "Santa Elena hostel (bring a hoodie, it's cool up here!)",
+      "morning": "⛴️ Jeep–Boat–Jeep across Lake Arenal (8 am)", "afternoon": "Explore Santa Elena, coffee and cake", "evening": "Free sunset viewpoint; soda dinner",
+      "food": "Breakfast before pickup; soda in Santa Elena", "transport": "Leg 2: jeep–boat–jeep", "leg": "L2", "activities": [], "nicerDinner": false,
+      "rain": { "note": "The cloud forest is literally inside clouds. Expect mist.", "backup": "Hummingbird garden or café hop in Santa Elena" } },
+    { "day": 6, "date": "2027-05-12", "region": "monteverde", "sleep": "Santa Elena hostel",
+      "morning": "🌿 Cloud Forest Reserve (book the 7 am timed entry)", "afternoon": "🪂 Extremo zipline + Superman cable", "evening": "Night walk (optional, extra) or card games",
+      "food": "Packed breakfast; soda lunch & dinner", "transport": "Local bus/taxi to the reserve", "activities": ["mv-reserve", "zipline"], "nicerDinner": false,
+      "rain": { "note": "Ziplines run in light rain, but they stop for lightning.", "backup": "Move the zipline to the morning slot on Day 7 and visit the Monteverde cheese factory/café instead" } },
+    { "day": 7, "date": "2027-05-13", "region": "manuel", "sleep": "Quepos / Manuel Antonio hostel",
+      "morning": "🚐 Shuttle to Manuel Antonio (≈4.5 h)", "afternoon": "🏖️ Playa Espadilla (free public beach)", "evening": "Sunset happy hour on the Manuel Antonio hill",
+      "food": "Snacks for the shuttle; soda dinner in Quepos", "transport": "Leg 3: Interbus shuttle", "leg": "L3", "activities": [], "nicerDinner": false,
+      "rain": { "note": "Afternoon rain while you're on the shuttle is the ideal timing.", "backup": "Hostel pool / Quepos malecón" } },
+    { "day": 8, "date": "2027-05-14", "region": "manuel", "sleep": "Quepos / Manuel Antonio hostel",
+      "morning": "🦥 Manuel Antonio NP at 7 am (sloths, monkeys, Playa Manuel Antonio)", "afternoon": "Beach nap, or 🏍️ ATV tour (optional)", "evening": "Cook at the hostel",
+      "food": "Packed snacks (the park restricts food — check rules); groceries", "transport": "Local bus Quepos → park (or moped)", "activities": ["ma-np", "atv"], "nicerDinner": false,
+      "rain": { "note": "Animals are most active in the early morning, before the rain.", "backup": "Marina Pez Vela walk + café" } },
+    { "day": 9, "date": "2027-05-15", "region": "manuel", "sleep": "Quepos / Manuel Antonio hostel",
+      "morning": "🏄 Surf lesson on Playa Espadilla", "afternoon": "🛵 Moped to Playa Biesanz, or ⛵ catamaran", "evening": "Beach-bar 2-for-1 cocktails",
+      "food": "Soda casado lunch; street-food dinner", "transport": "🛵 Moped day (if rented)", "activities": ["surf", "catamaran"], "nicerDinner": false,
+      "rain": { "note": "Surfing works in rain. Skip the moped in a downpour.", "backup": "Catamaran tours run in the morning; otherwise movie night at the hostel" } },
+    { "day": 10, "date": "2027-05-16", "region": "uvita", "sleep": "Uvita hostel (jungle cabins)",
+      "morning": "🚌 Bus down the coast to Uvita (≈1 h 15 min)", "afternoon": "Playa Uvita / Playa Hermosa walk", "evening": "🌅 Sunset at Playa Dominical",
+      "food": "Groceries in Uvita; soda dinner", "transport": "Leg 4: local bus", "leg": "L4", "activities": [], "nicerDinner": false,
+      "rain": { "note": "Short travel day, which leaves room for weather.", "backup": "Uvita farmers' market / yoga class at the hostel" } },
+    { "day": 11, "date": "2027-05-17", "region": "uvita", "sleep": "Uvita hostel",
+      "morning": "🛵 Ride to 🏞️ Nauyaca Waterfalls (hike 6 km round trip, swim)", "afternoon": "Dominical beach + smoothie", "evening": "BBQ at the hostel",
+      "food": "Packed lunch; groceries", "transport": "🛵 Moped day", "activities": ["nauyaca"], "nicerDinner": false,
+      "rain": { "note": "The Nauyaca trail gets muddy after rain, so start by 8 am.", "backup": "Visit Dominical surf shops & cafés; ride home before the storm" } },
+    { "day": 12, "date": "2027-05-18", "region": "uvita", "sleep": "Uvita hostel",
+      "morning": "🐋 Marino Ballena NP: walk the Whale's Tail at low tide", "afternoon": "🛵 Ojochal + Playa Ventanas sea caves", "evening": "🍽️ Farewell nicer dinner in Ojochal",
+      "food": "Soda lunch; nicer dinner", "transport": "🛵 Moped day", "activities": ["ballena"], "nicerDinner": true,
+      "rain": { "note": "Check the tide table and go at the morning low tide.", "backup": "Ojochal's restaurant scene is great on a rainy afternoon" } },
+    { "day": 13, "date": "2027-05-19", "region": "alajuela", "sleep": "Hostel near Alajuela center",
+      "morning": "🚌 Tracopa bus to San José (≈4.5–6 h)", "afternoon": "Uber to Alajuela, souvenir run", "evening": "Last casado + pack",
+      "food": "Bus snacks; soda dinner", "transport": "Leg 5: bus + Uber", "leg": "L5", "activities": [], "nicerDinner": false,
+      "rain": { "note": "A full travel day.", "backup": "A mall in Alajuela (City Mall) has souvenirs under a roof" } },
+    { "day": 14, "date": "2027-05-20", "region": "alajuela", "sleep": "🏠 Home!",
+      "morning": "Uber to SJO 3 h before flight", "afternoon": "✈️ Fly SJO → SYR", "evening": "Home, sunburnt and happy",
+      "food": "Breakfast near the airport", "transport": "Uber + flight", "activities": [], "nicerDinner": false,
+      "rain": { "note": "Leave extra time, because rain slows traffic to the airport.", "backup": "n/a" } }
+  ],
+
+  "hacks": [
+    { "title": "Eat at sodas, not tourist restaurants", "emoji": "🍛", "text": "A casado (rice, beans, salad, plantain, protein) costs $5–9 at a soda. That's about half the price of a tourist-strip plate, and you'll be full until dinner.", "src": ["bootsnall-col"] },
+    { "title": "Shop at Palí / Maxi Palí", "emoji": "🛒", "text": "Palí is Costa Rica's cheapest supermarket chain, and Auto Mercado is the most expensive. Buy local brands; imported goods are taxed heavily.", "src": ["drinktea-grocery", "tico-automercado"] },
+    { "title": "Pre-game with supermarket Imperial", "emoji": "🍺", "text": "A supermarket beer costs about ₡960 ($1.75–2) against $2.50–4 at a bar. Hunt for 2-for-1 happy hours at sunset.", "src": ["crie-beer"] },
+    { "title": "Take public buses on the easy legs", "emoji": "🚌", "text": "San José → La Fortuna costs about ₡3,500 by bus against about $55 by shuttle, which saves around $95 for two. Carry small colones bills.", "src": ["crxyz-bus", "drinktea-shuttle"] },
+    { "title": "Bring your student ID", "emoji": "🎓", "text": "The Monteverde Cloud Forest Reserve charges students about $12–13 instead of $25–26. Always ask about student prices.", "src": ["mv-guide"] },
+    { "title": "Do the free stuff", "emoji": "🏖️", "text": "Costa Rican beaches are public by law. Playa Espadilla, Playa Biesanz, Dominical sunsets and the El Salto swimming hole in La Fortuna all cost $0.", "src": [] },
+    { "title": "Use bank ATMs (BCR / Banco Nacional)", "emoji": "🏧", "text": "BAC charges $7.80 on foreign cards, while BCR and Banco Nacional were reported free. A no-foreign-fee debit card such as Schwab or a fintech card saves even more.", "src": ["atmfeesaver"] },
+    { "title": "Don't double tip", "emoji": "🧾", "text": "Restaurant bills already include a 10% service charge plus 13% tax. Read the receipt before adding more.", "src": [] },
+    { "title": "Bring sunscreen and bug spray from home", "emoji": "🧴", "text": "Imported toiletries cost much more in Costa Rica. Pack a reef-safe sunscreen and DEET from the US.", "src": ["drinktea-grocery"] },
+    { "title": "Book tours direct and ask for a combo", "emoji": "🤝", "text": "Reseller prices for the same tour vary by $20–40. Operators often discount combos (e.g. Pure Trek canyoning + zipline) and pay-in-cash deals. Green season can also mean promo rates.", "src": ["puretrek-rates", "interbus-itin"] }
+  ],
+
+  "packing": [
+    "Passports (+ photo copies)", "US driver's license (moped)", "Student IDs", "No-foreign-fee debit + credit card",
+    "Rain jacket / poncho", "Quick-dry shorts & tees", "Hoodie for Monteverde", "Swimsuits (2)", "Hiking shoes that can get muddy",
+    "Sandals / water shoes", "Dry bag for rafting & boat", "Reef-safe sunscreen", "DEET bug spray", "Reusable water bottle",
+    "Headlamp", "Universal power bank", "Ziploc bags for phones", "Small daypack", "Basic meds + motion-sickness pills", "Microfiber towel", "Padlock for hostel lockers"
+  ],
+  "pretrip": [
+    "Passport valid 6+ months past May 20, 2027", "Onward / return ticket printed or saved (immigration may ask)", "Travel insurance bought (check scooter coverage)",
+    "Offline maps downloaded (Google Maps + Maps.me)", "Bank & card travel notice set", "Moped license check (motorcycle endorsement?)",
+    "Manuel Antonio NP tickets booked on SINAC", "Monteverde Reserve timed entry booked", "First & last night hostels booked",
+    "eSIM installed before leaving", "Download Uber + WhatsApp", "Tell family the itinerary"
+  ],
+
+  "sources": [
+    { "id": "kayak-syr", "title": "KAYAK – Syracuse (SYR) to San José (SJO)", "url": "https://www.kayak.com/flight-routes/Syracuse-Hancock-Intl-SYR/San-Jose-Juan-Santamaria-Intl-SJO", "note": "Cheapest round trip ≈$320 (American), typical $354–537." },
+    { "id": "travelocity-syr", "title": "Travelocity – SYR to SJO", "url": "https://www.travelocity.com/lp/flights/syr/sjo/hancock-intl-to-juan-santamaria-intl", "note": "$320 round trip found in the past 7 days." },
+    { "id": "kayak-jfk", "title": "KAYAK – JFK to SJO", "url": "https://www.kayak.com/flight-routes/New-York-John-F-Kennedy-Intl-JFK/San-Jose-Juan-Santamaria-Intl-SJO", "note": "≈$268 Avianca 1-stop, typical $288–424, JetBlue nonstop ≈$282." },
+    { "id": "skyscanner-jfk", "title": "Skyscanner – JFK to SJO", "url": "https://skyscanner.com/routes/jfk/sjoa/new-york-john-f.-kennedy-to-san-jose.html", "note": "Best round trip found $199." },
+    { "id": "kayak-alb", "title": "KAYAK – Albany (ALB) to Liberia (LIR)", "url": "https://www.kayak.com/flight-routes/Albany-Intl-ALB/Liberia-LIR", "note": "Round trip from $351, no nonstop." },
+    { "id": "orbitz-alb", "title": "Orbitz – Albany to Liberia", "url": "https://www.orbitz.com/lp/flights/603260/500188/albany-to-liberia", "note": "From $386 round trip." },
+    { "id": "drinktea-uber", "title": "Drink Tea & Travel – Uber in Costa Rica (2026)", "url": "https://drinkteatravel.com/uber-in-costa-rica-tips/", "note": "Uber SJO → San José $10–18; pickups at arrivals are restricted." },
+    { "id": "aifly-sjo", "title": "aifly – SJO airport guide (May 2026)", "url": "https://aifly.one/2026/05/sjo-airport-guide/", "note": "Orange airport taxis on the ARESEP tariff, $25–35 to San José." },
+    { "id": "drinktea-backpack", "title": "Drink Tea & Travel – Backpacking Costa Rica (2026)", "url": "https://drinkteatravel.com/guide-backpacking-in-costa-rica/", "note": "Dorms: San José $15–22, La Fortuna $15–25." },
+    { "id": "hostelz-budget", "title": "Hostelz – Costa Rica backpacker budget", "url": "https://www.hostelz.com/en/backpacker-budget/costa-rica", "note": "Average dorm ≈$11; private rooms $23–365, average ≈$58." },
+    { "id": "bootsnall-col", "title": "BootsnAll – Cost of living in Costa Rica (2026)", "url": "https://www.bootsnall.com/data/cost-of-living/cost-of-living-costa-rica", "note": "Dorms $12–20; casado $5–9; bar beer $2.50–5." },
+    { "id": "fortuna-budget", "title": "La Fortuna Budget Guide 2026", "url": "https://www.machupicchu.org/la-fortuna-budget-guide-2026-how-to-visit-on-a-budget.htm", "note": "Private room $25–40 a night. Single, less established source." },
+    { "id": "hostelz-quepos", "title": "Hostelz – Quepos hostels with private rooms", "url": "https://www.hostelz.com/hostels/Costa-Rica/Quepos/hostels-with-private-rooms", "note": "Dorm from $11–13.69; private from $35–43.77; Selina private ≈$85.17." },
+    { "id": "booking-ma", "title": "Booking.com – Hostels in Manuel Antonio", "url": "https://www.booking.com/hostels/city/cr/manuel-antonio.html", "note": "2-adult night from ≈$36 (Wide Mouth Frog) to ≈$49.55." },
+    { "id": "hostelz-uvita", "title": "Hostelz – Hostels in Uvita", "url": "https://hostelz.com/hostels/Costa-Rica/Uvita", "note": "Dorm from $6; average dorm $20." },
+    { "id": "crie-food", "title": "CRIE – Costa Rica food prices", "url": "https://crie.cr/costa-rica-food-prices/", "note": "Casado $6–11." },
+    { "id": "crie-beer", "title": "CRIE – Beer in Costa Rica: Imperial, Pilsen, Bavaria and price comparisons", "url": "https://crie.cr/?p=296687", "note": "Supermarket ≈₡960 a bottle; bar $2.50–4; six-pack ≈₡4,000." },
+    { "id": "crvibes-alcohol", "title": "Costa Rica Vibes – Alcohol guide", "url": "https://www.costaricavibes.com/alcohol/", "note": "Cacique guaro 1 L ₡3,500–5,000; Imperial/Pilsen six-pack ≈₡5,200." },
+    { "id": "drinktea-grocery", "title": "Drink Tea & Travel – Costa Rica grocery stores guide (2026)", "url": "https://drinkteatravel.com/costa-rica-grocery-stores/", "note": "Palí is the cheapest chain; imported goods are taxed heavily." },
+    { "id": "tico-automercado", "title": "Tico Times – Auto Mercado is the most expensive grocery chain", "url": "https://ticotimes.net/2014/03/18/study-shows-that-auto-mercado-is-the-most-expensive-grocery-chain-in-the-country", "note": "From 2014, so the ranking is old but still commonly cited." },
+    { "id": "interbus-itin", "title": "Interbus – Itineraries", "url": "https://book.interbusonline.com/apps/book/interbus-itineraries.php", "note": "SJ → La Fortuna → Manuel Antonio → SJ loop from $140 pp + tax." },
+    { "id": "drinktea-shuttle", "title": "Drink Tea & Travel – Costa Rica shuttle guide", "url": "https://drinkteatravel.com/costa-rica-shuttle-guide/", "note": "Shared shuttle SJO → La Fortuna ≈$55 pp." },
+    { "id": "interbus-ma-mv", "title": "Interbus via Caribe Fun Tours – Manuel Antonio to Monteverde", "url": "https://caribefuntours.rezdy.com/214490/interbus-manuel-antonio-to-monteverde", "note": "From $57 pp." },
+    { "id": "jbj-casabatsu", "title": "Casabatsu – Arenal ↔ Monteverde Jeep Boat Jeep", "url": "https://casabatsutourdesk.rezdy.com/62564/jeep-boat-jeep-la-fortuna-to-monteverde", "note": "Regular service $25–35 pp." },
+    { "id": "jbj-elbosque", "title": "El Bosque Monteverde – How to get from La Fortuna to Monteverde", "url": "https://elbosquemonteverde.com/blog/how-to-get-from-la-fortuna-to-monteverde", "note": "$30–40 pp, taxes not included." },
+    { "id": "crxyz-bus", "title": "Costa Rica XYZ – Public transport", "url": "https://costaricaxyz.pages.dev/transportation/public-transport", "note": "SJ → La Fortuna ≈₡3,000–3,500; SJ → Quepos ₡5,000–6,500." },
+    { "id": "tico-fares", "title": "Tico Times – Bus and taxi fares rise after fuel price spike (May 2026)", "url": "https://ticotimes.net/2026/05/23/costa-rica-bus-and-taxi-fares-rise-after-fuel-price-spike", "note": "Fares went up in 2026, so older figures run low." },
+    { "id": "cr-divers-uvita", "title": "Costa Rica Divers – Uvita to San José", "url": "https://costaricadivers.com/destinations/uvita/uvita-to-san-jose/", "note": "Tracopa ≈$10–15 (₡6,000–7,500); private shuttle $250–400." },
+    { "id": "ma-fee", "title": "Rio Times – Costa Rica national parks guide 2026", "url": "https://www.riotimesonline.com/costa-rica-national-parks-guide-2026/", "note": "Manuel Antonio $16 + tax for foreign adults." },
+    { "id": "ma-faq", "title": "ManuelAntonioPark.com – FAQ", "url": "https://manuelantoniopark.com/faq/", "note": "Tickets sold online; cash not accepted; closed Tuesdays." },
+    { "id": "arenal-fee", "title": "Arenal Volcano NP 2026 guide", "url": "https://www.machupicchu.org/arenal-volcano-national-park-2026-hiking-lava-fields-guide.htm", "note": "$15 + 13% tax ≈$17. Verify on SINAC." },
+    { "id": "nomadic-fortuna-falls", "title": "Nomadic Backpacker – La Fortuna Waterfall without a tour", "url": "https://www.nomadicbackpacker.com/?p=6132", "note": "$20 foreigners (2026)." },
+    { "id": "mv-guide", "title": "Monteverde Cloud Forest 2026 guide", "url": "https://www.machupicchu.org/monteverde-cloud-forest-2026-complete-travel-guide.htm", "note": "$25 adults, $12 students." },
+    { "id": "mv-timed", "title": "Tico Times – Monteverde reserve caps visitors with timed entry (Mar 2026)", "url": "https://ticotimes.net/2026/03/25/monteverde-reserve-caps-daily-visitors-with-online-timed-entry-system", "note": "Book online." },
+    { "id": "rafting-fortunawelcome", "title": "Fortuna Welcome – Rafting Balsa River Class 2–3", "url": "https://www.fortunawelcome.com/la-fortuna-tours/rafting-balsa-river-class-2-3/", "note": "From $70 pp, taxes included." },
+    { "id": "rafting-2wks", "title": "Two Weeks in Costa Rica – Whitewater rafting from La Fortuna", "url": "https://www.twoweeksincostarica.com/product/whitewater-rafting-class-2-3-la-fortuna/", "note": "From $73 + VAT." },
+    { "id": "extremo-expedia", "title": "Expedia – Monteverde Extremo canopy tour", "url": "https://www.expedia.com/things-to-do/3-hours-of-the-longest-and-highest-extreme-zip-line-experience-in-monteverde.a2512112.activity-details", "note": "≈$72–95 per adult depending on transport." },
+    { "id": "nauyaca-ticotravel", "title": "TicoTravel – Nauyaca Waterfalls entrances & prices", "url": "https://ticotravel.com/nauyaca-falls-dominical-an-adventure-fit-for-the-family", "note": "Hike-in ≈$10; other entrances cost more." },
+    { "id": "nauyaca-saltinourhair", "title": "Salt in our Hair – Nauyaca Waterfalls", "url": "https://www.saltinourhair.com/costa-rica/nauyaca-waterfalls/", "note": "Nature Park entrance ≈$27–30." },
+    { "id": "surf-expedia", "title": "Expedia – Surf lessons in Manuel Antonio", "url": "https://www.expedia.com/things-to-do/surfing-classes-manuel-antonio.a4294981.activity-details", "note": "2-hour lessons ≈$66–105." },
+    { "id": "surf-cradventure", "title": "Costa Rica Adventure Center – Manuel Antonio surf lessons", "url": "https://costaricaadventurecenter.rezdy.com/646419/manuel-antonio-surf-lessons", "note": "From ≈$79, includes transport." },
+    { "id": "openshores-fortuna", "title": "OpenShores – La Fortuna cost of living (FR)", "url": "https://openshores.co/blog/costa-rica/la-fortuna/cout-de-la-vie", "note": "Baldi day visitor $35–60 (2026)." },
+    { "id": "puretrek-rates", "title": "Pure Trek 2026 rate sheet (PDF)", "url": "https://stwetuproduction.blob.core.windows.net/azure-blob-resources-wetu-production/Resources/170502/1760392031777pure-trek--rates-2026.pdf", "note": "Canyoning rack $103 + 13% tax." },
+    { "id": "ballena-atickettotakeoff", "title": "A Ticket to Take Off – How to visit Marino Ballena NP", "url": "https://atickettotakeoff.com/en/how-to-visit-marino-ballena-national-park/", "note": "$6 + tax foreigners." },
+    { "id": "ballena-crvibes", "title": "Costa Rica Vibes – Marino Ballena National Park", "url": "https://www.costaricavibes.com/marino-ballena-national-park/", "note": "$6 foreigners." },
+    { "id": "catamaran-ocean-king", "title": "Epic Costa Rica Tours – Ocean King Catamaran", "url": "https://epiccostaricatours.rezdy.com/557411/catamaran-tour", "note": "From $90 pp, 3.5 h with snorkel." },
+    { "id": "midworld-atv", "title": "Puravida EH – MidWorld ATV tour, Manuel Antonio", "url": "https://puravidaeh.ca/discounts/atv-tour-adult-manuel-antonio-midworld-costa-rica/", "note": "$95 (was $110), 4.5 h, lunch included." },
+    { "id": "fourtrax", "title": "FourTrax Adventure Tours (directory, Jun 2026)", "url": "https://costa-rica-directory.pages.dev/manuel-antonio/things-to-do/fourtrax-adventure-tours/", "note": "$110 single / $140 two sharing, + 13% tax." },
+    { "id": "localbird-scooter", "title": "Localbird – Quick Ride street scooter rental, Manuel Antonio", "url": "https://localbird.io/product/quick-ride-scooter-rental-manuel-antonio/", "note": "150cc: $51/day Dec–May, $57/day Jun–Nov; max 2 persons." },
+    { "id": "riderly-quepos", "title": "Riderly – Off-road scooter rental, Quepos", "url": "https://riderly.com/rentals/details/off-road-scooter-quepos-costa-rica-2ws0i9h0hj/", "note": "From $40/day; license A1 or B + age requirements; deposit up to $450 on some listings." },
+    { "id": "tripadvisor-mango", "title": "Tripadvisor – MangoScoot Manuel Antonio scooter rentals", "url": "https://www.tripadvisor.com/Attraction_Review-g309289-d23819912-Reviews-MangoScoot_Adventure_Manuel_Antonio_motorcycle_Scooter_Rentals-Quepos_Province_o.html", "note": "Multi-day from $137 per group." },
+    { "id": "bikesbooking-sj", "title": "BikesBooking – Rent a scooter in San José", "url": "https://bikesbooking.com/en/rent-a-scooter-in-San-Jose/", "note": "Basic third-party insurance included; CDW optional." },
+    { "id": "swiftest-ins", "title": "The Swiftest – Best Costa Rica travel insurance (2026)", "url": "https://theswiftest.com/best-costa-rica-travel-insurance-plans/", "note": "SafetyWing $56.28 per 4 weeks (ages 10–39)." },
+    { "id": "squaremouth", "title": "Squaremouth – Costa Rica travel insurance", "url": "https://www.squaremouth.com/resources/destinations/costa-rica", "note": "Average comprehensive premium $230 (2026, 12-day avg trip)." },
+    { "id": "tico-kolbi-airalo", "title": "Tico Times – kölbi launches Global eSIM with Airalo (Jul 2026)", "url": "https://ticotimes.net/2026/07/03/kolbi-global-esim-airalo-costa-rica", "note": "Buy data before you fly." },
+    { "id": "esims-io", "title": "esims.io – Best eSIM providers for Costa Rica (Aug 2026)", "url": "https://esims.io/en/countries/costa-rica/best-providers", "note": "Airalo ≈$1.01/GB." },
+    { "id": "atmfeesaver", "title": "ATM Fee Saver – Cash and ATMs in Costa Rica", "url": "https://explore.atmfeesaver.com/blog/money-currency-in-costa-rica/", "note": "BAC $7.80 per withdrawal; some bank ATMs free." },
+    { "id": "crguide-deptax", "title": "Costa Rica Guide – Departure tax", "url": "https://costa-rica-guide.com/practical/documents-requirements/departure-tax/", "note": "US$29, usually included in the airline ticket." },
+    { "id": "entercr-deptax", "title": "Enter Costa Rica – Will I be required to pay a departure tax?", "url": "https://www.entercostarica.com/information/will-i-be-required-to-pay-a-departure-tax", "note": "Check with your airline." },
+    { "id": "fx-ticotimes", "title": "Tico Times – Dollar hits historic low against the colón (May 2026)", "url": "https://ticotimes.net/2026/05/15/dollar-hits-historic-low-against-costa-ricas-colon-for-second-day", "note": "Closed at ₡453.94 (Monex)." },
+    { "id": "fx-valuta", "title": "ValutaFX – CRC/USD on 2026-07-22", "url": "https://www.valutafx.com/history/crc-usd-2026-07-22", "note": "≈₡453 per US$." }
+  ]
+}
